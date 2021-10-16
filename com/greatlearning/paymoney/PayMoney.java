@@ -32,39 +32,45 @@ public class PayMoney {
      * Explanation Target 1 i.e 21 is achieved after 2 transactions, (20 + 12)
      * Target 2 i.e 19 is achieved in the 1st transaction itself.
      */
-    public int tSize;
-    public int[] tran;
-    public int target;
+    public int tranCount;
+    // Defining Transactions as double since its Money and they can be in decimals
+    public double[] transactions;
 
     PayMoney() {
     }
 
-    public void collectData() {
+    public void collectTransactionData() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter transaction size: ");
-        tSize = sc.nextInt();
-        tran = new int[tSize];
-        System.out.println("Enter Target: ");
-        target = sc.nextInt();
-        System.out.println("Enter the values of array: ");
-        for (int i = 0; i < tSize; i++) {
-            tran[i] = sc.nextInt();
+
+        // Collect Transaction Data
+        System.out.println("Enter transaction size of transaction array ");
+        tranCount = sc.nextInt();
+        transactions = new double[tranCount];
+        System.out.println("Enter the values of array ");
+        for (int i = 0; i < tranCount; i++) {
+            transactions[i] = sc.nextInt();
         }
-        sc.close();
     }
 
-    public void checkTarget() {
-        int aTarget = 0;
-        for (int j = 0; j < tSize; j++) {
-            aTarget = aTarget + tran[j];
-            if (aTarget >= target) {
-                System.out.println("Target achived after " + j + "transactions. " + aTarget);
-                break;
+    public void collectAndVerifyTarget() {
+
+        // Collect & Validate Target Data
+        System.out.println("Enter the total no of targets that needs to be achieved");
+        Scanner sc = new Scanner(System.in);
+        int tCount = sc.nextInt();
+        for (int i = 0; i < tCount; i++) {
+            System.out.println("Enter the value of target ");
+            double d = sc.nextDouble();
+
+            double aTarget = 0;
+            for (int j = 0; j < tranCount; j++) {
+                aTarget = aTarget + transactions[j];
+                if (aTarget >= d) {
+                    System.out.println("Target achieved after " + (j + 1) + " transactions. " + aTarget);
+                    return;
+                }
             }
+            System.out.println("Given target is not achieved");
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 }
