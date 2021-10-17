@@ -32,9 +32,9 @@ public class PayMoney {
      * Explanation Target 1 i.e 21 is achieved after 2 transactions, (20 + 12)
      * Target 2 i.e 19 is achieved in the 1st transaction itself.
      */
-    public int tranCount;
+    private int tranCount;
     // Defining Transactions as double since its Money and they can be in decimals
-    public double[] transactions;
+    private double[] transactions;
 
     PayMoney() {
     }
