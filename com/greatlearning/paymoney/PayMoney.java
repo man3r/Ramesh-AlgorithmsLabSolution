@@ -61,16 +61,17 @@ public class PayMoney {
         for (int i = 0; i < tCount; i++) {
             System.out.println("Enter the value of target ");
             double d = sc.nextDouble();
-
             double aTarget = 0;
             for (int j = 0; j < tranCount; j++) {
                 aTarget = aTarget + transactions[j];
                 if (aTarget >= d) {
-                    System.out.println("Target achieved after " + (j + 1) + " transactions. " + aTarget);
-                    return;
+                    System.out.println("Target achieved after " + (j + 1) + " transactions \n");
+                    break;
                 }
             }
-            System.out.println("Given target is not achieved");
+            if (aTarget < d) {
+                System.out.println("Given target is not achieved");
+            }
         }
     }
 }
